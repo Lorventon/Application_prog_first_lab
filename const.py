@@ -28,6 +28,7 @@ class TransportEnum(Enum):
     BICYCLE = "Bicycle"
     SCOOTER = "Scooter"
     CAR = "Car"
+    MOTORCYCLE = "Motorcycle"
 
     @staticmethod
     def is_valid_type(value: str) -> bool:
