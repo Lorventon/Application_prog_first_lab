@@ -1,5 +1,6 @@
+from const import FilePathEnum
 def main() -> None:
-    print("Hello, world!")
+    print(FilePathEnum.get_path("json"))
 
 
 if __name__ == "__main__":
