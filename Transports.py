@@ -21,7 +21,7 @@ class Transport:
         self.__color: str = color
 
     @property
-    def transport_id(self) -> str:
+    def transport_id(self) -> int:
         return self.__transport_id
 
     @property
@@ -38,7 +38,7 @@ class Transport:
 
     @property
     def color(self) -> str:
-        return self.color
+        return self.__color
 
     @transport_id.setter
     def transport_id(self, id: int) -> None:
@@ -72,7 +72,7 @@ class Transport:
     @staticmethod
     def from_dict(data: dict) -> "Transport":
         transport = Transport(data["type_of_transport"], data["name"], data["speed"], data["color"])
-        transport.transport_id = data["transport_id"]
+        transport.transport_id = data.get("transport_id", 0)
         return transport
 
     def __str__(self) -> str:
@@ -89,6 +89,12 @@ class Car(Transport):
         data["model"] = self.model
         return data
 
+    @staticmethod
+    def from_dict(data: dict) -> "Car":
+        car = Car(data["name"], data["speed"], data["model"], data["color"])
+        car.transport_id = data.get("transport_id", 0)
+        return car
+
 
 class Bike(Transport):
     def __init__(self, name: str, speed: int, color: str) -> None:
@@ -97,6 +103,12 @@ class Bike(Transport):
     def to_dict(self) -> dict:
         data = super().to_dict()
         return data
+
+    @staticmethod
+    def from_dict(data: dict) -> "Bike":
+        bike = Bike(data["name"], data["speed"], data["color"])
+        bike.transport_id = data.get("transport_id", 0)
+        return bike
 
 
 class Bus(Transport):
@@ -109,6 +121,12 @@ class Bus(Transport):
         data["passenger_capacity"] = self.passenger_capacity
         return data
 
+    @staticmethod
+    def from_dict(data: dict) -> "Bus":
+        bus = Bus(data["name"], data["speed"], data["passenger_capacity"], data["color"])
+        bus.transport_id = data.get("transport_id", 0)
+        return bus
+
 
 class Truck(Transport):
     def __init__(self, name: str, speed: int, load_capacity: int, color: str) -> None:
@@ -120,6 +138,12 @@ class Truck(Transport):
         data["load_capacity"] = self.load_capacity
         return data
 
+    @staticmethod
+    def from_dict(data: dict) -> "Truck":
+        truck = Truck(data["name"], data["speed"], data["load_capacity"], data["color"])
+        truck.transport_id = data.get("transport_id", 0)
+        return truck
+
 
 class Motorcycle(Transport):
     def __init__(self, name: str, speed: int, model: str, color: str):
@@ -130,3 +154,10 @@ class Motorcycle(Transport):
         data = super().to_dict()
         data["model"] = self.model
         return data
+
+    @staticmethod
+    def from_dict(data: dict) -> "Motorcycle":
+        motorcycle = Motorcycle(data["name"], data["speed"], data["model"], data["color"])
+        motorcycle.transport_id = data.get("transport_id", 0)
+        return motorcycle
+

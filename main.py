@@ -1,6 +1,4 @@
 from const import FilePathEnum
-from const import FilePathEnum
-from Transports import Car
 
 
 def main() -> None:
