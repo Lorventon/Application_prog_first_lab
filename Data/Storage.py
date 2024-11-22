@@ -12,7 +12,7 @@ class TransportStorage:
         self.serializer: Serializer = serializer
         self.db_path: str = FilePathEnum.get_path(serializer.get_type())
 
-    def save_to_file(self, transports_data: TransportsData) -> None:
+    def save_to_file(self, ) -> None:
         try:
             if not os.path.exists(self.db_path):
                 self._create_file(self.db_path)

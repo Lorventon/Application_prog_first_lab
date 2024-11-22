@@ -11,7 +11,7 @@ TRANSPORT_MAP = {
 class Transport:
 
     def __init__(self, type_of_transport: str, name: str, speed: int, color: str) -> None:
-        if not TransportEnum.is_valid_type(type_of_transport):
+        if type_of_transport not in TRANSPORT_MAP:
             raise ValueError(f"Invalid type of transport: {type_of_transport}")
 
         self.__transport_id: int = 0
@@ -81,7 +81,7 @@ class Transport:
 
 class Car(Transport):
     def __init__(self, name: str, speed: int, model: str, color: str) -> None:
-        super().__init__(TransportEnum.CAR.value, name, speed, color)
+        super().__init__(Car.__name__, name, speed, color)
         self.model: str = model
 
     def to_dict(self) -> dict:
