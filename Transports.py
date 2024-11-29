@@ -1,11 +1,14 @@
 from const import TransportEnum
 
 TRANSPORT_MAP = {
-    'Car': lambda name, speed: Car(name, speed, "Sedan"),
-    'Bike': lambda name, speed: Bike(name, speed, True),
-    'Bus': lambda name, speed: Bus(name, speed, 50),
-    'Truck': lambda name, speed: Truck(name, speed, 12),
+    'Car': lambda name, speed, color, model: Car(name, speed, model, color),
+    'Bike': lambda name, speed, color: Bike(name, speed, color),
+    'Bus': lambda name, speed, color, passenger_capacity: Bus(name, speed, passenger_capacity, color),
+    'Truck': lambda name, speed, color, load_capacity: Truck(name, speed, load_capacity, color),
+    'Motorcycle': lambda name, speed, color, model: Motorcycle(name, speed, model, color),
 }
+
+transports = list()
 
 
 class Transport:
@@ -76,11 +79,11 @@ class Transport:
         return transport
 
     def __str__(self) -> str:
-        return f"{self.type_of_transport} - {self.name}, speed: {self.speed}"
+        return f"{self.type_of_transport}  {self.name}, speed: {self.speed}"
 
 
 class Car(Transport):
-    def __init__(self, name: str, speed: int, model: str, color: str) -> None:
+    def __init__(self, name: str, speed: int, color: str, model: str) -> None:
         super().__init__(Car.__name__, name, speed, color)
         self.model: str = model
 
@@ -112,7 +115,7 @@ class Bike(Transport):
 
 
 class Bus(Transport):
-    def __init__(self, name: str, speed: int, passenger_capacity: int, color: str) -> None:
+    def __init__(self, name: str, speed: int, color: str, passenger_capacity: int) -> None:
         super().__init__(TransportEnum.BUS.value, name, speed, color)
         self.passenger_capacity: int = passenger_capacity
 
@@ -129,7 +132,7 @@ class Bus(Transport):
 
 
 class Truck(Transport):
-    def __init__(self, name: str, speed: int, load_capacity: int, color: str) -> None:
+    def __init__(self, name: str, speed: int, color: str, load_capacity: int) -> None:
         super().__init__(TransportEnum.TRUCK.value, name, speed, color)
         self.load_capacity: int = load_capacity
 
@@ -146,7 +149,7 @@ class Truck(Transport):
 
 
 class Motorcycle(Transport):
-    def __init__(self, name: str, speed: int, model: str, color: str):
+    def __init__(self, name: str, speed: int, color: str, model: str):
         super().__init__(TransportEnum.MOTORCYCLE.value, name, speed, color)
         self.model: str = model
 

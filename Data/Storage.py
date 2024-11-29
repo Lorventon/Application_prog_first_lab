@@ -4,25 +4,25 @@ from const import FilePathEnum
 from typing import Dict, List
 from Transports import Transport
 
-TransportsData = Dict[str, int | List[Dict]]
-
 
 class TransportStorage:
     def __init__(self, serializer: Serializer) -> None:
         self.serializer: Serializer = serializer
         self.db_path: str = FilePathEnum.get_path(serializer.get_type())
 
-    def save_to_file(self, ) -> None:
+    def save_to_file(self, transports: list) -> None:
         try:
             if not os.path.exists(self.db_path):
                 self._create_file(self.db_path)
             with open(self.db_path, 'w', encoding='utf-8') as file:
-                file.write(self.serializer.to_format(transports_data))
+                #Необходим список транпспортов.
+                file.write(self.serializer.to_format(transports))
                 print(f"Данные сохранены в файл: {self.db_path}")
         except Exception as error:
             print(f"Ошибка при сохранении данных: {error}")
 
-    def load_from_file(self) -> TransportsData:
+    def load_from_file(self) -> list:
+
         try:
             if not os.path.exists(self.db_path):
                 self._create_file()
@@ -34,6 +34,6 @@ class TransportStorage:
 
     def _create_file(self) -> None:
         print(f"Создание нового файла: {self.db_path}")
-        initial_data: TransportsData = {"total_count": 0, "transports": []}
+        initial_data: list = {"transports": []}
         with open(self.db_path, 'w', encoding='utf-8') as file:
             file.write(self.serializer.to_format(initial_data))

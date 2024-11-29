@@ -4,12 +4,11 @@ from xml.dom.minidom import parseString
 from serializer import Serializer
 from Transports import Transport
 
-TransportsData = dict[str, int | list[Transport]]
-
 
 class XmlSerializer(Serializer):
 
-    def to_format(self, transports_data: TransportsData) -> str:
+    def to_format(self, transports: list) -> str:
+        serializable_data = [transport.to_dict() for transport in transports]
         root = Element("transports_data")
         total_count = SubElement(root, "total_count")
         total_count.text = str(transports_data.get("total_count", 0))
@@ -27,7 +26,7 @@ class XmlSerializer(Serializer):
         pretty_xml = dom.toprettyxml(indent="    ")
         return pretty_xml
 
-    def from_format(self, file_data: str) -> TransportsData:
+    def from_format(self, file_data: str) -> list:
         root = fromstring(file_data)
         transports = []
         total_count = int(root.find("total_count").text)

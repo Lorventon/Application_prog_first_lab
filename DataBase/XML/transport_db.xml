@@ -5,37 +5,18 @@
         <transport_id>1</transport_id>
         <name>Автобус №42</name>
         <capacity>50</capacity>
-        <route>
-            <stop>Остановка 1</stop>
-            <stop>Остановка 2</stop>
-            <stop>Остановка 3</stop>
-            <stop>Остановка 4</stop>
-            <stop>Остановка 5</stop>
-        </route>
     </transport>
     <transport>
         <type>Трамвай</type>
         <transport_id>2</transport_id>
         <name>Трамвай №15</name>
         <capacity>80</capacity>
-        <route>
-            <stop>Парк</stop>
-            <stop>Площадь Ленина</stop>
-            <stop>Улица Горького</stop>
-            <stop>Вокзал</stop>
-        </route>
     </transport>
     <transport>
         <type>Троллейбус</type>
         <transport_id>3</transport_id>
         <name>Троллейбус №7</name>
         <capacity>60</capacity>
-        <route>
-            <stop>Центральный рынок</stop>
-            <stop>Остановка Мира</stop>
-            <stop>Университет</stop>
-            <stop>Остановка Победы</stop>
-        </route>
     </transport>
     <transport>
         <type>Маршрутка</type>
@@ -54,11 +35,5 @@
         <transport_id>5</transport_id>
         <name>Такси 'Комфорт'</name>
         <capacity>4</capacity>
-        <route>
-            <stop>Дом</stop>
-            <stop>Торговый центр</stop>
-            <stop>Кинотеатр</stop>
-            <stop>Стадион</stop>
-        </route>
     </transport>
 </transports>

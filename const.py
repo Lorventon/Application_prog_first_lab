@@ -18,16 +18,10 @@ class FilePathEnum(Enum):
 
 
 class TransportEnum(Enum):
-    BUS = "Bus"
-    TRAIN = "Train"
-    AIRPLANE = "Plane"
-    SHIP = "Ship"
-    TRAM = "Tram"
-    METRO = "Metro"
-    TAXI = "Taxi"
-    BICYCLE = "Bicycle"
-    SCOOTER = "Scooter"
     CAR = "Car"
+    BIKE = "Bike"
+    BUS = "Bus"
+    TRUCK = "Truck"
     MOTORCYCLE = "Motorcycle"
 
     @staticmethod

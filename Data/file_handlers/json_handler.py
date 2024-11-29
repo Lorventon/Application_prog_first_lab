@@ -1,6 +1,6 @@
 import json
 
-from Data.file_handlers.serializer import Serializer, TransportsData
+from Data.file_handlers.serializer import Serializer
 from Transports import Transport, TRANSPORT_MAP
 
 
@@ -23,3 +23,5 @@ class JSONSerializer(Serializer):
 
     def get_type(self) -> str:
         return "json"
+
+
